@@ -2,6 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Blog from './components/Blog';
 import MyNav from './components/MyNav';
+import Blogs from './components/Blogs';
 
 function App() {
 	return (
@@ -16,7 +17,7 @@ function App() {
 						</div>
 					}
 				/>
-				<Route path="/blogs" element={<Blog />} />
+				<Route path="/blogs/*" element={<Blogs />} />
 				<Route path="/blogs/:id" element={<Blog />} />
 			</Routes>
 		</div>

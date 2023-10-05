@@ -1,42 +1,26 @@
-import React,{useEffect, useState}from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React, { useState,useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 function Blog() {
-  const url = "http://localhost:3001/blogs";
-  const [blogs,setBlogs] = useState([]);
-  
-  const fetchBlogs = () => {
-    return fetch(url).then((res)=>res.json()).then((d)=>setBlogs(d))
-  }
+  const {id} = useParams();
+  const [blog,setBlog] = useState(null)
 
   useEffect(() => {
-    document.title = "Blogs"
-    fetchBlogs();
-  }, [])
+    // Fetch the individual blog post using the id
+    fetch(`http://localhost:3001/blogs/${id}`)
+      .then((res) => res.json())
+      .then((data) => setBlog(data));
+  }, [id]);
 
-  const Blogs = ()=>{
-    return(<ul>
-    {blogs.map((blog) => {
-      return (<Link to={`/blogs/${blog.id}`}><li>{blog.title}</li></Link>)
-    })}
-    </ul>) 
+  if (!blog) {
+    return <div>Loading...</div>;
   }
 
-  const { blogId } = useParams();
-  console.log(blogId)
-
   return (
-    <>
-    <h1>Blog List
-      <br />
-      Viewing: {blogId}
-    </h1>
-
-    <Blogs/>
-    
-    <Link to="/">Home</Link>
-    <Link to="/blogs">All Blogs</Link>
-    </>
+    <div> 
+      <h2>{blog.title}</h2>
+      <p>{blog.content}</p>
+    </div>
   )
 }
 
