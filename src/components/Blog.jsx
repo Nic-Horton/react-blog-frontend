@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import Comments from './Comments';
 
 function Blog() {
   const {id} = useParams();
@@ -20,6 +21,8 @@ function Blog() {
     <div> 
       <h2>{blog.title}</h2>
       <p>{blog.content}</p>
+
+      <Comments blogId={id} />
     </div>
   )
 }
