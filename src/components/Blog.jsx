@@ -19,7 +19,7 @@ function Blog() {
 
   return (
     <div> 
-      <h2>{blog.title}</h2>
+      <h1>{blog.title}</h1>
       <p>{blog.content}</p>
 
       <Comments blogId={id} />
