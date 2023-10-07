@@ -4,6 +4,8 @@ import Blog from './components/Blog';
 import MyNav from './components/MyNav';
 import Blogs from './components/Blogs';
 import CreateBlog from './components/CreateBlog';
+import Login from './components/Login';
+import Register from './components/Register';
 
 function App() {
 	return (
@@ -28,6 +30,8 @@ function App() {
 				<Route path="/blogs" element={<Blogs />} />
 				<Route path="/blogs/:id" element={<Blog />} />
 				<Route path="/create" element={<CreateBlog />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/register" element={<Register />} />
 			</Routes>
 		</div>
 	);

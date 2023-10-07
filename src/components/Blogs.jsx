@@ -2,11 +2,10 @@ import React,{useEffect, useState}from 'react'
 import {Link } from 'react-router-dom'
 
 function Blogs() {
-  const url = "http://localhost:3001/blogs";
   const [blogs,setBlogs] = useState([]);
   
   const fetchBlogs = () => {
-    return fetch(url).then((res)=>res.json()).then((d)=>setBlogs(d))
+    return fetch("http://localhost:3001/blogs").then((res)=>res.json()).then((d)=>setBlogs(d))
   }
 
   useEffect(() => {

@@ -7,6 +7,8 @@ function MyNav() {
     <Link to={"/"}>Home</Link>
     <Link to={"/blogs"}>Blogs</Link>
     <Link to={'/create'}>Create</Link>
+    <Link to={'/login'}>Login</Link>
+    <Link to={'/register'}>Register</Link>
   </nav>
   )
 }

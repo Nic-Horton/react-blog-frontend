@@ -13,14 +13,14 @@ function Blog() {
     fetch(`http://localhost:3001/blogs/${id}`)
       .then((res) => res.json())
       .then((data) => setBlog(data));
+    fetch(`http://localhost:3001/comments/${id}`)
+      .then((res)=>res.json())
+      .then((data)=>setComments(data))
   }, [id]);
 
-  //fetch comments for blog
-  useEffect(()=>{
-    fetch(`http://localhost:3001/comments/${id}`)
-    .then((res)=>res.json())
-    .then((data)=>setComments(data))
-  })
+  const handleAdded = (newComment) => {
+    setComments([...comments, newComment])
+  }
 
   if (!blog) {
     return <div>Loading...</div>;
@@ -30,11 +30,12 @@ function Blog() {
     <div> 
       <h1>{blog.title}</h1>
       <p>{blog.content}</p>
-<hr />
-      <CreateComment blogId={id}/>
-<hr />
+      <hr />
       <Comments comments={comments}/>
+      <hr />
+      <CreateComment blogId={id} onCommentAdded={handleAdded}/>
     </div>
+    
   )
 }
 

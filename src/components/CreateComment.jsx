@@ -1,9 +1,11 @@
 import React from 'react'
 
 
-function CreateComment({blogId}) {
+function CreateComment({blogId, onCommentAdded}) {
 
   const _submitHandler = (e) => {
+    e.preventDefault();
+
     fetch(`http://localhost:3001/new/comment/${blogId}`,{ method: 'POST', 
     headers: { 'content-type': 'application/json' }, 
     body: JSON.stringify({
@@ -15,13 +17,17 @@ function CreateComment({blogId}) {
     } else if (data) {
       alert('Comment Posted!');
       e.target.message.value = '';
+
+      if(onCommentAdded){
+        onCommentAdded(data);
+      }
     }
   })
   }
   
   return (
     <div>
-      <form onSubmit={(e)=>{e.preventDefault(); _submitHandler(e)}}>
+      <form onSubmit={(e)=>{_submitHandler(e)}}>
         <label htmlFor='message'><h3>Add Comment</h3></label>
         <textarea name='message' cols='30' rows='4' required/>
         <br />
