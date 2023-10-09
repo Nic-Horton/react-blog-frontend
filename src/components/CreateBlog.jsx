@@ -3,7 +3,7 @@ import React from 'react'
 function CreateBlog() {
 
   const _submitHandler = (e) => {
-    fetch('http://localhost:3001/new/blog',{ method: 'POST', 
+    fetch('http://localhost:3001/new/blog',{ method: 'POST', credentials:'include',
     headers: { 'content-type': 'application/json' }, 
     body: JSON.stringify({
       title: e.target.title.value,
@@ -11,7 +11,7 @@ function CreateBlog() {
     })
   }).then((res) => res.json()).then((data) => {
     if (data.error) {
-      return alert('Please try again. Error occurred');
+      return alert('Please log in');
     } else if (data) {
       alert('Blog post has been published!');
       e.target.title.value = '';

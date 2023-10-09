@@ -6,14 +6,14 @@ function CreateComment({blogId, onCommentAdded}) {
   const _submitHandler = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3001/new/comment/${blogId}`,{ method: 'POST', 
+    fetch(`http://localhost:3001/new/comment/${blogId}`,{ method: 'POST', credentials:'include',
     headers: { 'content-type': 'application/json' }, 
     body: JSON.stringify({
       message: e.target.message.value
     })
   }).then((res) => res.json()).then((data) => {
     if (data.error) {
-      return alert('Please try again. Error occurred');
+      return alert('Please log in');
     } else if (data) {
       alert('Comment Posted!');
       e.target.message.value = '';
