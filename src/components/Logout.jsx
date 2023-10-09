@@ -1,9 +1,10 @@
 import React from 'react'
 
-function Logout() {
+function Logout({logout}) {
 
   const _clickHandler = () =>  {
     fetch('http://localhost:3001/logout', {credentials:'include'}).then((res) => res.json())
+    logout();
   }
 
   return (

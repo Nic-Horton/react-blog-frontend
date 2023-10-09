@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({onLogin}) {
   const navigate = useNavigate();
 
   const _submitHandler = (e) =>{
@@ -18,6 +18,7 @@ function Login() {
       return alert('Please try again. Error occurred');
     } else if (data) {
       alert('Logged In!');
+      onLogin();
       e.target.username.value = '';
       e.target.password.value = '';
       navigate("/");
