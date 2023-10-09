@@ -16,12 +16,10 @@ function useAuthenticate() {
 	}, []);
 
   const login = () => {
-    // Simulate a successful login (You can replace this with your actual login logic)
     setIsLoggedIn(true);
   };
 
   const logout = () => {
-    // Simulate a logout (You can replace this with your actual logout logic)
     setIsLoggedIn(false);
   };
 
