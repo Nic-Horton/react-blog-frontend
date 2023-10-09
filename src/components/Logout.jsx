@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from '@mui/material';
 
 function Logout({logout}) {
 
@@ -8,7 +9,7 @@ function Logout({logout}) {
   }
 
   return (
-    <button onClick={_clickHandler}>logout</button>
+    <Button sx={{textDecoration: 'none',color: 'red'}} onClick={_clickHandler}>logout</Button>
   )
 }
 
