@@ -43,13 +43,11 @@ function Blog() {
           color="inherit"
           align="center"
           noWrap
-          sx={{ flex: 1 }}
-          mt={3}
-          mb={3}
+          sx={{ flex: 1, mt: 3, mb: 3}}
         >
           {blog.title}
       </Typography>
-      <Typography variant="subtitle1" paragraph>
+      <Typography align="left" variant="subtitle1" paragraph sx={{pl:6, pr:6}}>
       {blog.content}
       </Typography>
 
