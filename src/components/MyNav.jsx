@@ -150,7 +150,7 @@ function MyNav({isLoggedIn, logout}) {
                   <Button sx={{textDecoration: 'none',color: 'inherit'}}>{setting}</Button>
                 </MenuItem>
               ))}
-              <MenuItem>
+              <MenuItem onClick={handleCloseUserMenu}>
                 <Logout logout={logout}/>
               </MenuItem>
             </Menu>
@@ -159,7 +159,6 @@ function MyNav({isLoggedIn, logout}) {
           <Box sx={{ flexGrow: 0, display: { xs: 'flex'} }}>
               <Link to={'/login'} style={{ textDecoration: 'none' }}>
               <Button
-                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block'}}
               >
                 Login
@@ -167,7 +166,6 @@ function MyNav({isLoggedIn, logout}) {
               </Link>
               <Link to={'/register'} style={{ textDecoration: 'none' }}>
               <Button
-                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block'}}
               >
                 Register

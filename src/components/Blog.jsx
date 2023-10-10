@@ -47,7 +47,7 @@ function Blog() {
         >
           {blog.title}
       </Typography>
-      <Typography align="left" variant="subtitle1" paragraph sx={{pl:6, pr:6}}>
+      <Typography align="left" variant="subtitle1" paragraph sx={{pl:6, pr:6, ml:2, mr:2}}>
       {blog.content}
       </Typography>
 
