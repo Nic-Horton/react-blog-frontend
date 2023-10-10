@@ -4,7 +4,8 @@ import Comments from './Comments';
 import CreateComment from './CreateComment';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function Blog() {
   const {id} = useParams();
@@ -36,12 +37,23 @@ function Blog() {
 
   return (
     <div> 
-      <h1>{blog.title}</h1>
-      <p>{blog.content}</p>
+      <Typography
+          component="h2"
+          variant="h2"
+          color="inherit"
+          align="center"
+          noWrap
+          sx={{ flex: 1 }}
+          mt={3}
+          mb={3}
+        >
+          {blog.title}
+      </Typography>
+      <Typography variant="subtitle1" paragraph>
+      {blog.content}
+      </Typography>
 
-      <Button variant="contained" color="primary" onClick={toggleElements}>
-        {showComments ? 'Hide Comments' : 'Show Comments'}
-      </Button>
+      
       {showComments && (
       <Paper sx={{display: { md: 'flex' }}} elevation={2}>
       <Comments comments={comments} blogId={id} onCommentAdded={handleAdded}/>
@@ -49,6 +61,10 @@ function Blog() {
       <CreateComment blogId={id} onCommentAdded={handleAdded}/>
       </Paper>
       )}
+      <br/>
+      <Button variant="contained" color="primary" onClick={toggleElements}>
+        {showComments ? 'Hide Comments' : 'Show Comments'}
+      </Button>
     </div>
     
   )
