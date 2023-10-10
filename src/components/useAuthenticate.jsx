@@ -13,7 +13,7 @@ function useAuthenticate() {
           setUser(data.user)
         } else {
           //setIsLoggedIn(false);
-          setUser(null)
+          setUser('')
         }
 			});
 	}, [isLoggedIn]);
