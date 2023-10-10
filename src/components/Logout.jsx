@@ -1,7 +1,8 @@
 import React from 'react'
-import { Button } from '@mui/material';
+import { Button, MenuItem } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-function Logout({logout}) {
+function Logout({logout,handleCloseUserMenu}) {
 
   const _clickHandler = () =>  {
     fetch('http://localhost:3001/logout', {credentials:'include'}).then((res) => res.json())
@@ -9,7 +10,9 @@ function Logout({logout}) {
   }
 
   return (
-    <Button sx={{textDecoration: 'none',color: 'red'}} onClick={_clickHandler}>logout</Button>
+    <MenuItem component={Link} to={'/'} onClick={()=>{handleCloseUserMenu(); _clickHandler()}}>
+      <Button sx={{textDecoration: 'none',color: 'red'}}>logout</Button>
+    </MenuItem>
   )
 }
 

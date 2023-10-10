@@ -44,7 +44,7 @@ function Login({onLogin}) {
       e.target.email.value = '';
       e.target.password.value = '';
       navigate("/");
-      window.location.reload();
+      //window.location.reload();
     }
   })
   }

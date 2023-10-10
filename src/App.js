@@ -24,9 +24,18 @@ function App() {
 				/>
 				<Route path="/blogs" element={<Blogs />} />
 				<Route path="/blogs/:id" element={<Blog user={user} />} />
-				<Route path="/create" element={<CreateBlog />} />
-				<Route path="/yourblogs" element={<YourBlogs />} />
-				<Route path="/yourcomments" element={<YourComments />} />
+				<Route
+					path="/create"
+					element={isLoggedIn ? <CreateBlog /> : <HomePage />}
+				/>
+				<Route
+					path="/your-blogs"
+					element={isLoggedIn ? <YourBlogs /> : <HomePage />}
+				/>
+				<Route
+					path="/your-comments"
+					element={isLoggedIn ? <YourComments /> : <HomePage />}
+				/>
 				<Route path="/login" element={<Login onLogin={login} />} />
 				<Route path="/register" element={<Register />} />
 			</Routes>

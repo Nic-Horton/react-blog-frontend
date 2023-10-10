@@ -17,7 +17,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 const publicPages = [{name: 'Home', path: '/' },{name: 'Blogs', path: '/blogs' }];
 const privatePages = [{name: 'Create', path: '/create' },]
-const settings = [{name:'Your Blogs', path: '/yourblogs'},{name:'Your Comments', path:'/yourcomments'}];
+const settings = [{name:'Your Blogs', path: '/your-blogs'},{name:'Your Comments', path:'/your-comments'}];
 
 function MyNav({isLoggedIn, logout}) {
   let pages = [];
@@ -146,13 +146,11 @@ function MyNav({isLoggedIn, logout}) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-                  <Button component={Link} to={setting.path} sx={{textDecoration: 'none',color: 'inherit'}}>{setting.name}</Button>
+                <MenuItem key={setting.name} component={Link} to={setting.path} onClick={handleCloseUserMenu}>
+                  <Button  sx={{textDecoration: 'none',color: 'inherit'}}>{setting.name}</Button>
                 </MenuItem>
               ))}
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Logout logout={logout}/>
-              </MenuItem>
+                <Logout logout={logout} handleCloseUserMenu={handleCloseUserMenu}/>
             </Menu>
           </Box>
           ) : (
