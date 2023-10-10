@@ -7,7 +7,7 @@ import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-function Blog() {
+function Blog({user}) {
   const {id} = useParams();
   const [blog,setBlog] = useState(null);
   const [showComments, setShowComments] = useState(false);
@@ -47,6 +47,16 @@ function Blog() {
         >
           {blog.title}
       </Typography>
+      <Typography
+          component="h5"
+          variant="h5"
+          color="inherit"
+          align="center"
+          noWrap
+          sx={{ flex: 1, mt: 3, mb: 3}}
+        >
+          By: {blog.User.username}
+      </Typography>
       <Typography align="left" variant="subtitle1" paragraph sx={{pl:6, pr:6, ml:2, mr:2}}>
       {blog.content}
       </Typography>
@@ -54,7 +64,7 @@ function Blog() {
       
       {showComments && (
       <Paper sx={{display: { md: 'flex' }}} elevation={2}>
-      <Comments comments={comments} blogId={id} onCommentAdded={handleAdded}/>
+      <Comments comments={comments} user={user} blogId={id} onCommentAdded={handleAdded}/>
       <Divider orientation="vertical" variant="middle" flexItem />
       <CreateComment blogId={id} onCommentAdded={handleAdded}/>
       </Paper>

@@ -9,20 +9,20 @@ import Typography from '@mui/material/Typography';
 
 import Box from '@mui/material/Box';
 
-function Comments({comments}) {
+function Comments({comments,user}) {
 
   const ListJSX = () =>{
     return comments.map((comment) => {
-      return(
+      return (
         <div key={comment.id}>
         <ListItem alignItems="flex-start">
         <ListItemAvatar>
             <AccountCircle />
         </ListItemAvatar>
         <ListItemText
+          primary={ comment.User ? (comment.User.username ? comment.User.username : user) : user}
           secondary={comment.message}
         />
-        
       </ListItem>
       <Divider variant="inset" component="li" />
       </div>)

@@ -16,15 +16,18 @@ function Blogs() {
     .then((d)=>setBlogs(d))
   }, [])
 
-  const CardJSX = () =>{
+const CardJSX = () =>{
    return blogs.map((blog) =>{
       return (
         <Grid item xs={12} md={6} key={blog.id}>
           <CardActionArea component={Link} to={`/blogs/${blog.id}`} >
-            <Card sx={{ display: 'flex', bgcolor: 'grey.A400'}}>
+            <Card sx={{ display: 'flex', bgcolor: 'primary.light'}}>
               <CardContent sx={{ flex: 1 }}>
                 <Typography component="h2" variant="h5">
                   {blog.title}
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary">
+                  By: {blog.User.username}
                 </Typography>
               </CardContent>
             </Card>

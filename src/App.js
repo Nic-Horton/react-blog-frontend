@@ -8,18 +8,25 @@ import Login from './components/Login';
 import Register from './components/Register';
 import HomePage from './components/HomePage';
 import useAuthenticate from './components/useAuthenticate';
+import YourBlogs from './components/YourBlogs';
+import YourComments from './components/YourComments';
 
 function App() {
-	const { isLoggedIn, login, logout } = useAuthenticate();
+	const { isLoggedIn, login, logout, user } = useAuthenticate();
 
 	return (
 		<div className="App">
 			<MyNav isLoggedIn={isLoggedIn} logout={logout} />
 			<Routes>
-				<Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
+				<Route
+					path="/"
+					element={<HomePage isLoggedIn={isLoggedIn} user={user} />}
+				/>
 				<Route path="/blogs" element={<Blogs />} />
-				<Route path="/blogs/:id" element={<Blog />} />
+				<Route path="/blogs/:id" element={<Blog user={user} />} />
 				<Route path="/create" element={<CreateBlog />} />
+				<Route path="/yourblogs" element={<YourBlogs />} />
+				<Route path="/yourcomments" element={<YourComments />} />
 				<Route path="/login" element={<Login onLogin={login} />} />
 				<Route path="/register" element={<Register />} />
 			</Routes>
