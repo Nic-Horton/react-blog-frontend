@@ -7,6 +7,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import { Button } from '@mui/material';
+import UpdateBlog from './UpdateBlog';
 
 function YourBlogs() {
   const [blogs,setBlogs] = useState([]);
@@ -28,10 +29,6 @@ function YourBlogs() {
 		});
   }
 
-  const _updateBlog = (id) =>{
-    console.log('update')
-  }
-
   const CardJSX = () =>{
     return blogs.map((blog) =>{
        return (
@@ -46,13 +43,11 @@ function YourBlogs() {
                </CardContent>
              </Card>
            </CardActionArea>
-           <div sx={{display:'flex'}}>
+           <div sx={{display:'flex', alignItems: 'center'}}>
             <Button onClick={()=> {_deleteBlog(blog.id)}} variant='contained' sx={{bgcolor: 'error.main', color:'white', '&:hover': {bgcolor: 'error.light', }}}>
               Delete
             </Button>
-            <Button onClick={()=> {_updateBlog(blog.id)}} variant='contained' sx={{bgcolor: 'success.main', color:'white', '&:hover': {bgcolor: 'success.light', }}}>
-              Update
-            </Button>
+            <UpdateBlog id={blog.id} content={blog.content} title={blog.title}/>
             </div>
          </Grid>
        )
